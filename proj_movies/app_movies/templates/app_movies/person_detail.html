@@ -1,0 +1,49 @@
+{% extends 'app_movies/base.html' %}
+{% load static %}
+
+{% block title %}{{ person.name }}{% endblock title %}
+
+{% block sidebar %}
+    <div class="side-bar col-lg-4">
+{% endblock sidebar %}
+
+{% block content %}
+    <div class="left-ads-display col-lg-8">
+        <div class="row">
+            <div class="desc1-left col-md-6">
+                {% if person.photo %}
+                    <img src="{{ person.photo.url }}" class="img-fluid" alt="ФОТО">
+                {% endif %}
+            </div>
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent">
+                    {{ person.get_occupation_display }}<br>{{ person.name }}
+                </h3>
+                <h5 class="editContent"></h5>
+                <ul>
+                    {% if person.birth %}
+                        <li><span><b>Возраст: </b>{{ person.calculate_age }}</span></li>
+                        <li><span><b>Дата рождения: </b>{{ person.birth }}</span></li>
+                    {% endif %}
+                    <li><span><b>Страна: </b>{{ person.country }}</span></li>
+                    {% if person.dir.all %}
+                        <li><span><b>Режиссер: </b>{{ person.dir.all|join:', ' }}</span></li>
+                    {% endif %}
+                    {% if person.act.all %}
+                        <li><span><b>Актер: </b>{{ person.act.all|join:', ' }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="row sub-para-w3layouts mt-5">
+            {% if person.description %}
+                <h3 class="shop-sing editContent">
+                    {{ person.name }}
+                </h3>
+                <p class="editContent">
+                    {{ person.description }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

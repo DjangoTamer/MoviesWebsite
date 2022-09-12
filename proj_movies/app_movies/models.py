@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 ###
 class Country(models.Model):
@@ -42,6 +43,10 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+
+    def calculate_age(self):
+        today = date.today()
+        return today.year - self.birth.year - ((today.month, today.day) < (self.birth.month, self.birth.day))
 
     class Meta:
         verbose_name = 'Личность'
