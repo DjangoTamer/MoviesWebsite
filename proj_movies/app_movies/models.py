@@ -44,6 +44,9 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('person', kwargs={'slug': self.slug})
+
     def calculate_age(self):
         today = date.today()
         return today.year - self.birth.year - ((today.month, today.day) < (self.birth.month, self.birth.day))

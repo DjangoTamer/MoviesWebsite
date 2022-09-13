@@ -1,4 +1,5 @@
 {% extends 'app_movies/base.html' %}
+{% load app_movies_tags %}
 
 
 {% block title %}{{ movie.name }}{% endblock %}
@@ -20,10 +21,9 @@
             <h5 class="editContent"></h5>
             <ul>
                 <li style="list-style: none"><span><b>Год: </b>{{ movie.year }}</span></li>
-                <li style="list-style: none"><span><b>Страна: </b>{{ movie.country }}</span>
-                </li>
-                <li style="list-style: none"><span><b>Режиссер: </b>{{ movie.director.all|join:', ' }}</span></li>
-                <li style="list-style: none"><span><b>Актеры: </b>{{ movie.actor.all|join:', '}}</span></li>
+                <li style="list-style: none"><span><b>Страна: </b>{{ movie.country }}</span></li>
+                <li style="list-style: none"><span><b>Режиссер: </b>{% get_linked_list my_list=movie.director.all %}</span></li>
+                <li style="list-style: none"><span><b>Актеры: </b>{% get_linked_list my_list=movie.actor.all %}</span></li>
                 <li style="list-style: none"><span><b>Жанр: </b>{{ movie.genre.all|join:', '|lower }}</span></li>
                 <li style="list-style: none"><span><b>Бюджет: </b>{{ movie.budget }} $</span></li>
                 <li style="list-style: none"><span><b>Сборы в мире: </b>{{ movie.box_office }} $</span></li>

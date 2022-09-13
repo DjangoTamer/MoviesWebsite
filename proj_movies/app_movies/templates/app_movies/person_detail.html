@@ -1,5 +1,6 @@
 {% extends 'app_movies/base.html' %}
 {% load static %}
+{% load app_movies_tags %}
 
 {% block title %}{{ person.name }}{% endblock title %}
 
@@ -27,10 +28,10 @@
                     {% endif %}
                     <li><span><b>Страна: </b>{{ person.country }}</span></li>
                     {% if person.dir.all %}
-                        <li><span><b>Режиссер: </b>{{ person.dir.all|join:', ' }}</span></li>
+                        <li><span><b>Режиссер: </b>{% get_linked_list my_list=person.dir.all %}</span></li>
                     {% endif %}
                     {% if person.act.all %}
-                        <li><span><b>Актер: </b>{{ person.act.all|join:', ' }}</span></li>
+                        <li><span><b>Актер: </b>{% get_linked_list my_list=person.act.all %}</span></li>
                     {% endif %}
                 </ul>
             </div>
