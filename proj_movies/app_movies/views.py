@@ -23,6 +23,7 @@ class MovieListView(GetGenreYearActor, ListView):
     model = Movie
     queryset = Movie.objects.filter(published=True)
     template_name = 'app_movies/movie_list.html'
+    paginate_by = 6
 
 
 class MovieDetailView(GetGenreYearActor, DetailView):
@@ -33,11 +34,6 @@ class MovieDetailView(GetGenreYearActor, DetailView):
 class PersonDetailView(GetGenreYearActor, DetailView):
     model = Person
     slug_field = 'slug'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['new_key'] = 8
-        return context
 
 
 class AddComment(View):
@@ -53,15 +49,37 @@ class AddComment(View):
 
 
 class FilterMovieView(GetGenreYearActor, ListView):
+    paginate_by = 3
 
     def get_queryset(self):
-        # queryset = Movie.objects.filter(
-        #     Q(year__in=self.request.GET.getlist('year')) | Q(genre__in=self.request.GET.getlist('genre_id'))
-        # )
-        queryset = Movie.objects.filter(year__in=self.request.GET.getlist('year'))
+        years_list = self.request.GET.getlist('year')
+        genres_list = self.request.GET.getlist('genre_id')
+        queryset = Movie.objects.filter(published=True)
+        if years_list and genres_list:
+            queryset = queryset.filter(Q(year__in=years_list) & Q(genre__in=genres_list))
+        else:
+            queryset = queryset.filter(Q(year__in=years_list) | Q(genre__in=genres_list))
+        # queryset = Movie.objects.filter(year__in=self.request.GET.getlist('year'))
+        return queryset.distinct()
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['year'] = ''.join([f'year={x}&' for x in self.request.GET.getlist('year')])
+        context['genre'] = ''.join([f'genre_id={x}&' for x in self.request.GET.getlist('genre_id')])
+        return context
+
+
+class SearchMovieView(GetGenreYearActor, ListView):
+    paginate_by = 2
+
+    def get_queryset(self):
+        queryset = Movie.objects.filter(name__icontains=self.request.GET.get('s'))
         return queryset
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['search'] = f"s={self.request.GET.get('s')}&"
+        return context
 
 '''
 # Functions Views for example
