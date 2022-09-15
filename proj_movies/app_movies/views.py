@@ -91,6 +91,9 @@ class SearchMovieView(GetGenreYearActor, ListView):
         return context
 
 
+# альтернатива - flatpages django
+def show_contacts(request):
+    return render(request, 'app_movies/contacts.html')
 
 '''
 # Functions Views for example
