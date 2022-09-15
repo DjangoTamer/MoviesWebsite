@@ -5,6 +5,7 @@ from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
 
+
 class GetGenreYearActor:
     def get_genres(self):
         return Genre.objects.all()
@@ -28,7 +29,14 @@ class MovieListView(GetGenreYearActor, ListView):
 
 class MovieDetailView(GetGenreYearActor, DetailView):
     model = Movie
+    queryset = Movie.objects.filter(published=True)
     slug_field = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
+
 
 
 class PersonDetailView(GetGenreYearActor, DetailView):
@@ -73,7 +81,9 @@ class SearchMovieView(GetGenreYearActor, ListView):
     paginate_by = 2
 
     def get_queryset(self):
-        queryset = Movie.objects.filter(name__icontains=self.request.GET.get('s'))
+        search = self.request.GET.get('s')
+        # в данной БД не работает icontains, поэтому сделал костыль для увеличения совпадений
+        queryset = Movie.objects.filter(Q(name__contains=search.lower()) | Q(name__contains=search.capitalize()))
         return queryset
 
     def get_context_data(self, *args, **kwargs):

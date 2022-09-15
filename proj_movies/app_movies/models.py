@@ -126,7 +126,7 @@ class Comment(models.Model):
     to_whom = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Кому')
 
     def __str__(self):
-        return f'{self.user} - {self.movie} - {self.to_whom}'
+        return f'{self.user} - {self.movie} - {self.to_whom_id}'
 
     class Meta:
         verbose_name = 'Комментарий'
