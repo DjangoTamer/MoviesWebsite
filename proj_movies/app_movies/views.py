@@ -38,7 +38,6 @@ class MovieDetailView(GetGenreYearActor, DetailView):
         return context
 
 
-
 class PersonDetailView(GetGenreYearActor, DetailView):
     model = Person
     slug_field = 'slug'
@@ -91,6 +90,8 @@ class SearchMovieView(GetGenreYearActor, ListView):
         context['search'] = f"s={self.request.GET.get('s')}&"
         return context
 
+
+
 '''
 # Functions Views for example
 def show_movie_list(request):
@@ -101,4 +102,3 @@ def show_movie_detail(request, slug):
     movie = Movie.objects.get(slug=slug)
     return render(request, 'app_movies/movie_detail.html', context={'movie': movie})
 '''
-

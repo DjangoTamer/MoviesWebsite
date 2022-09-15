@@ -1,5 +1,6 @@
 from django.urls import path
-from app_movies.views import MovieListView, FilterMovieView, SearchMovieView, MovieDetailView, PersonDetailView, AddComment
+from app_movies.views import MovieListView, FilterMovieView, SearchMovieView, MovieDetailView, PersonDetailView, \
+    AddComment
 
 urlpatterns = [
     path('', MovieListView.as_view(), name='main'),
