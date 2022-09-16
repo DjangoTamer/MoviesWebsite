@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
+from app_mail_subscription.models import MailSubscription
+from app_mail_subscription.forms import MailSubscriptionForm
 
-# Create your views here.
+class MailSubscriptionView(CreateView):
+    model = MailSubscription
+    form_class = MailSubscriptionForm
+    success_url = "/"
+

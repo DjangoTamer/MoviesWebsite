@@ -1,3 +1,7 @@
 from django.contrib import admin
+from app_mail_subscription.models import MailSubscription
 
-# Register your models here.
+@admin.register(MailSubscription)
+class MailSubscriptionAdmin(admin.ModelAdmin):
+   list_display = ('email', 'time_create')
+
