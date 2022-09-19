@@ -80,7 +80,7 @@ header {
     position: absolute;
     z-index: 9;
     width: 100%;
-    background-color: #00000045;
+    background-color: #212529;
 }
 
 .toggle,
@@ -788,11 +788,15 @@ h4.group.card-title {
 }
 
 /*--/breadcrumb--*/
+.breadcrumb {
+    border-radius: 0rem;
+}
+
 ol.breadcrumb {
     background: none;
     margin: 0;
     padding: 1em 2em;
-    background: #f7f7f7;
+    background: #6c757d87;
 }
 
 li.breadcrumb-item {
@@ -1589,7 +1593,7 @@ a.move-top span {
     transition: all .2s ease-in-out;
     font-family: Roboto, sans-serif;
     font-size: 16px;
-    color: #6163b9
+    color: #212529
 }
 
 @media only screen and (max-width: 767px) {
@@ -1600,7 +1604,8 @@ a.move-top span {
 
 @media only screen and (min-width: 1025px) {
     .pagination a.pagination__link:hover {
-        background: rgba(102, 88, 175, .15)
+        color: #9d0101;
+        background: #21252920
     }
 }
 
@@ -1648,18 +1653,18 @@ a.move-top span {
 @media only screen and (min-width: 1025px) {
     .pagination__item.active:hover
     .pagination__link {
-        color: #fff;
-        background: #6658af
+        color: #9d0101;
+        background: #212529;
     }
 }
 
 .pagination__item.active .pagination__link {
     color: #fff;
-    background: #6658af
+    background: #212529;
 }
 
 .pagination__item--dots .pagination__link {
-    color: #bfc0f1
+    color: #212529
 }
 
 /* --/Pagination */
