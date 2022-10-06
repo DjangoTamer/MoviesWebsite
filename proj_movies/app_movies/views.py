@@ -95,6 +95,7 @@ class SearchMovieView(GetGenreYearActor, ListView):
 def show_contacts(request):
     return render(request, 'app_movies/contacts.html')
 
+
 '''
 # Functions Views for example
 def show_movie_list(request):

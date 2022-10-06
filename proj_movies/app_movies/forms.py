@@ -18,4 +18,3 @@ class CommentForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'class': 'form-control border', 'id': "contactemail"}),
             'text': forms.Textarea(attrs={'class': 'form-control border', "id": "contactcomment", 'rows': '5'})
         }
-

@@ -10,7 +10,7 @@
             <!-- nav -->
             <nav class="py-4">
                 <div id="logo">
-                    <h1> <a href="{% url 'main' %}" class="editContent" style="outline: none; outline-offset: -2px;
+                    <h1><a href="{% url 'main' %}" class="editContent" style="outline: none; outline-offset: -2px;
                     cursor: inherit; color: rgb(255, 255, 255); font-size: 40px; background-color: rgba(0, 0, 0, 0);
                     font-family: &quot;Source Sans Pro&quot;, sans-serif;">КИНОГИД</a></h1>
                 </div>
@@ -20,7 +20,8 @@
                 <ul class="menu mt-2">
                     <li>
                         <!-- First Tier Drop Down -->
-                        <label for="drop-2" class="toggle">Жанры <span class="fa fa-angle-down" aria-hidden="true" ></span> </label>
+                        <label for="drop-2" class="toggle">Жанры <span class="fa fa-angle-down"
+                                                                       aria-hidden="true"></span> </label>
                         <a href="#">Жанры <span class="fa fa-angle-down" aria-hidden="true"></span></a>
                         <input type="checkbox" id="drop-2">
                         <ul>
@@ -33,12 +34,12 @@
                     <li class="active"><a href="{% url 'main' %}">Главная</a></li>
                     <li>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'account_logout' %}"
-                               style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                        <a href="{% url 'account_logout' %}"
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
                             {{ user.username|truncatechars:10 }}, Выйти</a>
                         {% else %}
-                            <a href="{% url 'account_login' %}"
-                               style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                        <a href="{% url 'account_login' %}"
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
                             Вход</a>
                         {% endif %}
                     </li>
@@ -49,13 +50,13 @@
     </header>
     <!-- //header -->
     <!--/banner-->
-<!--    <div class="banner-info">-->
-<!--        <p class="editContent" >лучший сайт на django 3</p>-->
-<!--        <h3 class="mb-4 editContent">Все о кино</h3>-->
-<!--        <div class="ban-buttons">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;// banner-inner &ndash;&gt;-->
+    <!--    <div class="banner-info">-->
+    <!--        <p class="editContent" >лучший сайт на django 3</p>-->
+    <!--        <h3 class="mb-4 editContent">Все о кино</h3>-->
+    <!--        <div class="ban-buttons">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    &lt;!&ndash;// banner-inner &ndash;&gt;-->
 </div>
 <!--//main-content-->
 

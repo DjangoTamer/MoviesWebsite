@@ -3,6 +3,7 @@ from app_movies.models import Genre, Movie
 
 register = template.Library()
 
+
 # данный тег только в качестве примера, функционал можно заменить классом GetGenreYearActor
 @register.simple_tag()
 def get_genres_header():

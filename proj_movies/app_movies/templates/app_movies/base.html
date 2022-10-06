@@ -3,41 +3,42 @@
 
 <html lang="ru">
 <head>
-        <title>
-            {% block title %}
-            {% endblock %}
-        </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'app_movies/css/bootstrap.css' %}">
-        <!-- Bootstrap-Core-CSS -->
-        <link rel="stylesheet" href="{% static 'app_movies/css/style.css' %}" type="text/css" media="all">
-        <!-- font-awesome-icons -->
-        <link href="{% static 'app_movies/css/font-awesome.css' %}" rel="stylesheet">
-        <!-- //font-awesome-icons -->
-      <!-- /Fonts -->
-        <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700" rel="stylesheet">
-        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
-        <!-- //Fonts -->
-        {% recaptcha_init %}
-        {% recaptcha_ready action_name='homepage' %}
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app_movies/css/bootstrap.css' %}">
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{% static 'app_movies/css/style.css' %}" type="text/css" media="all">
+    <!-- font-awesome-icons -->
+    <link href="{% static 'app_movies/css/font-awesome.css' %}" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!-- /Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900"
+          rel="stylesheet">
+    <!-- //Fonts -->
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='homepage' %}
 </head>
 <body>
-    <div id="page" class="page">
-        {% include 'includes/header.html' %}
-        <section class="ab-info-main py-md-5 py-4 editContent"
+<div id="page" class="page">
+    {% include 'includes/header.html' %}
+    <section class="ab-info-main py-md-5 py-4 editContent"
              style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(33, 37, 41); font-size: 16px; background-color: rgba(0, 0, 0, 0); font-family: Lato, sans-serif;">
-            <div class="container py-md-3">
-                <!-- ПОПРОБОВАТЬ ЧЕРЕЗ ПЕРЕМЕННЫЕ -->
-                    <div class="row">
-                        {% block sidebar %}
-                        {% endblock sidebar %}
-                        {% block content %}
-                        {% endblock content %}
-                    </div>
-                </div>
-        </section>
-        {% include 'includes/footer.html' %}
-    </div>
+        <div class="container py-md-3">
+            <!-- ПОПРОБОВАТЬ ЧЕРЕЗ ПЕРЕМЕННЫЕ -->
+            <div class="row">
+                {% block sidebar %}
+                {% endblock sidebar %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </section>
+    {% include 'includes/footer.html' %}
+</div>
 </body>
 </html>

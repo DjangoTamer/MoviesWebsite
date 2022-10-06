@@ -10,7 +10,8 @@ class MailSubscriptionForm(forms.ModelForm):
         model = MailSubscription
         fields = ('email', 'captcha')
         widgets = {
-            'email': forms.EmailInput(attrs={'class': 'editContent', 'placeholder': "Введи адрес электронной почты..."}),
+            'email': forms.EmailInput(
+                attrs={'class': 'editContent', 'placeholder': "Введи адрес электронной почты..."}),
         }
         labels = {
             'email': ''

@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 
+
 ###
 class Country(models.Model):
     name = models.CharField('Страна', max_length=100)
@@ -82,8 +83,6 @@ class Movie(models.Model):
 
     def get_secondary_comments(self):
         return self.comment_set.filter(to_whom=self.id)
-
-
 
     class Meta:
         verbose_name = 'Фильм'

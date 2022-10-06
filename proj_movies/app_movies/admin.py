@@ -11,6 +11,7 @@ admin.site.register(Rating)
 class CountryAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
+
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -23,7 +24,7 @@ class PersonAdmin(admin.ModelAdmin):
     list_display = ('name', 'occupation', 'country', 'get_photo',)
     ordering = ('occupation', 'name')
     search_fields = ('name',)
-    list_filter = ('occupation', 'country', )
+    list_filter = ('occupation', 'country',)
     list_per_page = 10
     prepopulated_fields = {'slug': ('name',)}
 
@@ -74,12 +75,14 @@ class SceneAdmin(admin.ModelAdmin):
 
     get_photo.short_description = Scene.photo.field.verbose_name
 
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('movie', 'user', 'to_whom', 'time_create')
     ordering = ('movie', 'time_create')
     search_fields = ('movie',)
     readonly_fields = ('time_create', 'time_update')
+
 
 admin.site.site_title = 'Проект Фильмы'
 admin.site.site_header = 'Проект Фильмы'
